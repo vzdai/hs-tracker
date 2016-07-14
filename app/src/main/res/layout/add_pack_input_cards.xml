@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_cards_instructions"  />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:stretchColumns="*"
+        android:layout_weight="1" >
+
+        <TableRow>
+
+            <LinearLayout />
+
+            <TextView
+                android:text="@string/card_type_regular"/>
+
+            <TextView
+                android:text="@string/card_type_golden"/>
+
+        </TableRow>
+
+        <include layout="@layout/add_pack_card_row" />
+
+        <include layout="@layout/add_pack_card_row" />
+
+        <include layout="@layout/add_pack_card_row" />
+
+        <include layout="@layout/add_pack_card_row" />
+
+    </TableLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_pack"/>
+
+
+</LinearLayout>
