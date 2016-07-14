@@ -48,6 +48,14 @@
                 android:value=".MainActivity" />
         </activity>
 
+        <activity android:name=".activities.OptionsActivity"
+            android:label="@string/options"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity android:name=".activities.InputCardsActivity"
             android:label="@string/add_pack"
             android:parentActivityName=".activities.AddPackActivity">

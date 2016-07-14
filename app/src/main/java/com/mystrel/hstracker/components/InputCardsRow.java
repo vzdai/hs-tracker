@@ -48,6 +48,18 @@ public class InputCardsRow extends TableLayout {
         return rowLabel;
     }
 
+    public int getRegularCount() {
+        TextView regularCount = (TextView) findViewById(R.id.regularText);
+        String count = regularCount.getText().toString();
+        return Integer.parseInt(count);
+    }
+
+    public int getGoldenCount() {
+        TextView goldenCount = (TextView) findViewById(R.id.goldenText);
+        String count = goldenCount.getText().toString();
+        return Integer.parseInt(count);
+    }
+
     private void inflateView(Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.add_pack_card_row, this);

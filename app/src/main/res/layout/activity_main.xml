@@ -17,25 +17,30 @@
         android:text="@string/your_quests" />
 
     <TableLayout
-        android:stretchColumns="0,1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1">
 
-            <Button
-                android:text="@string/add_quest"
-                android:onClick="addQuest"/>
+        <Button
+            android:onClick="addQuest"
+            android:text="@string/add_quest" />
 
-            <Button
-                android:text="@string/add_pack"
-                android:onClick="addPack" />
+        <Button
+            android:onClick="addPack"
+            android:text="@string/add_pack" />
 
-            <Button
-                android:text="@string/add_game"
-                android:onClick="addGame"/>
+        <Button
+            android:onClick="addGame"
+            android:text="@string/add_game" />
 
-            <Button
-                android:text="@string/view_stats"
-                android:onClick="viewStats"/>
+        <Button
+            android:onClick="viewStats"
+            android:text="@string/view_stats" />
+
+        <Button
+            android:onClick="viewOptions"
+            android:text="@string/options"
+            />
 
     </TableLayout>
 

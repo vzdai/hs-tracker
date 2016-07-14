@@ -8,6 +8,7 @@ import android.view.View;
 import com.mystrel.hstracker.activities.AddGameActivity;
 import com.mystrel.hstracker.activities.AddPackActivity;
 import com.mystrel.hstracker.activities.AddQuestActivity;
+import com.mystrel.hstracker.activities.OptionsActivity;
 import com.mystrel.hstracker.activities.ViewStatsActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void viewStats(View view) {
         Intent i = new Intent(this, ViewStatsActivity.class);
+        startActivity(i);
+    }
+
+    public void viewOptions(View view) {
+        Intent i = new Intent(this, OptionsActivity.class);
         startActivity(i);
     }
 

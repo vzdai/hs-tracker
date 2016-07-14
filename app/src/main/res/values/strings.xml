@@ -7,6 +7,7 @@
     <string name="add_pack">Add Pack</string>
     <string name="add_game">Add Game</string>
     <string name="view_stats">View Stats</string>
+    <string name="options">Options</string>
 
     <string name="select_pack_type">Select the type of pack you are adding</string>
     <string name="add_cards_instructions">Use the +/- buttons to input the number of cards of each type</string>
@@ -23,12 +24,26 @@
     <string name="card_type_regular">Regular</string>
     <string name="card_type_golden">Golden</string>
 
+    <string name="invalid_num_cards">Please enter exactly 5 cards for this pack</string>
+
+    <string name="reset_stats">Reset stats</string>
+
 
     <!-- KEYS-->
-    <string name="pack_type_key">PACK_TYPE</string>
+    <string name="packs_file">Packs</string>
+    <string name="pack_type_key">pack</string>
 
-    <string name="classic_pack_key">CLASSIC</string>
+    <string name="classic_pack_key">Classic</string>
     <string name="tgt_pack_key">TGT</string>
     <string name="wotog_pack_key">WOTOG</string>
+
+    <string name="regular_common_key">regularCommon</string>
+    <string name="golden_common_key">goldenCommon</string>
+    <string name="regular_rare_key">regularRare</string>
+    <string name="golden_rare_key">goldenRare</string>
+    <string name="regular_epic_key">regularEpic</string>
+    <string name="golden_epic_key">goldenEpic</string>
+    <string name="regular_legendary_key">regularLegendary</string>
+    <string name="golden_legendary_key">goldenLegendary</string>
 
 </resources>
