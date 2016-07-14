@@ -9,18 +9,20 @@
     <TableRow>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Rarity" />
+            android:id="@+id/label" />
 
         <LinearLayout
             android:layout_gravity="right"
+            android:layout_width="0dp"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:id="@+id/regularText"
                 android:text="@string/zero" />
 
             <LinearLayout
@@ -33,6 +35,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="0dp"
                     android:minWidth="40dp"
+                    android:id="@+id/regularIncrement"
                     android:text="@string/plus"/>
 
                 <Button
@@ -40,6 +43,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="0dp"
                     android:minWidth="40dp"
+                    android:id="@+id/regularDecrement"
                     android:text="@string/minus"/>
 
             </LinearLayout>
@@ -48,11 +52,13 @@
 
         <LinearLayout
             android:layout_gravity="right"
+            android:layout_width="0dp"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:id="@+id/goldenText"
                 android:text="@string/zero" />
 
             <LinearLayout
@@ -65,6 +71,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="0dp"
                     android:minWidth="40dp"
+                    android:id="@+id/goldenIncrement"
                     android:text="@string/plus"/>
 
                 <Button
@@ -72,6 +79,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="0dp"
                     android:minWidth="40dp"
+                    android:id="@+id/goldenDecrement"
                     android:text="@string/minus"/>
 
             </LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hstracker="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -26,13 +27,31 @@
 
         </TableRow>
 
-        <include layout="@layout/add_pack_card_row" />
+        <com.mystrel.hstracker.components.InputCardsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            hstracker:row_label="@string/common"
+            />
 
-        <include layout="@layout/add_pack_card_row" />
+        <com.mystrel.hstracker.components.InputCardsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            hstracker:row_label="@string/rare"
+            />
 
-        <include layout="@layout/add_pack_card_row" />
+        <com.mystrel.hstracker.components.InputCardsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            hstracker:row_label="@string/epic"
+            />
 
-        <include layout="@layout/add_pack_card_row" />
+        <com.mystrel.hstracker.components.InputCardsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            hstracker:row_label="@string/legendary"
+            />
+
+
 
     </TableLayout>
 
