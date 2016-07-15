@@ -1,4 +1,4 @@
-package com.mystrel.hstracker.activities;
+package com.mystrel.hstracker.AddPack;
 
 import android.content.Intent;
 import android.os.Bundle;

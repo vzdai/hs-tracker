@@ -27,28 +27,28 @@
 
         </TableRow>
 
-        <com.mystrel.hstracker.components.InputCardsRow
+        <com.mystrel.hstracker.AddPack.InputCardsRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/commonRow"
             hstracker:row_label="@string/common"
             />
 
-        <com.mystrel.hstracker.components.InputCardsRow
+        <com.mystrel.hstracker.AddPack.InputCardsRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rareRow"
             hstracker:row_label="@string/rare"
             />
 
-        <com.mystrel.hstracker.components.InputCardsRow
+        <com.mystrel.hstracker.AddPack.InputCardsRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/epicRow"
             hstracker:row_label="@string/epic"
             />
 
-        <com.mystrel.hstracker.components.InputCardsRow
+        <com.mystrel.hstracker.AddPack.InputCardsRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/legendaryRow"

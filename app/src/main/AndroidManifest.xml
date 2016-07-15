@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.AddGameActivity"
+        <activity android:name=".AddGame.AddGameActivity"
             android:label="@string/add_game"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -24,7 +24,7 @@
                 android:value=".MainActivity" />
         </activity>
 
-        <activity android:name=".activities.AddPackActivity"
+        <activity android:name=".AddPack.AddPackActivity"
             android:label="@string/add_pack"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -32,7 +32,7 @@
                 android:value=".MainActivity" />
         </activity>
 
-        <activity android:name=".activities.AddQuestActivity"
+        <activity android:name=".AddQuest.AddQuestActivity"
             android:label="@string/add_quest"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -40,7 +40,7 @@
                 android:value=".MainActivity" />
         </activity>
 
-        <activity android:name=".activities.ViewStatsActivity"
+        <activity android:name=".ViewStats.ViewStatsActivity"
             android:label="@string/view_stats"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -48,7 +48,7 @@
                 android:value=".MainActivity" />
         </activity>
 
-        <activity android:name=".activities.OptionsActivity"
+        <activity android:name=".Options.OptionsActivity"
             android:label="@string/options"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -56,12 +56,12 @@
                 android:value=".MainActivity" />
         </activity>
 
-        <activity android:name=".activities.InputCardsActivity"
+        <activity android:name=".AddPack.InputCardsActivity"
             android:label="@string/add_pack"
-            android:parentActivityName=".activities.AddPackActivity">
+            android:parentActivityName=".AddPack.AddPackActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.AddPackActivity" />
+                android:value=".AddPack.AddPackActivity" />
         </activity>
 
     </application>

@@ -1,4 +1,4 @@
-package com.mystrel.hstracker.activities;
+package com.mystrel.hstracker.ViewStats;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

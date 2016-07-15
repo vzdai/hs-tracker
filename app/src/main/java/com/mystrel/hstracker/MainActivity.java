@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.mystrel.hstracker.activities.AddGameActivity;
-import com.mystrel.hstracker.activities.AddPackActivity;
-import com.mystrel.hstracker.activities.AddQuestActivity;
-import com.mystrel.hstracker.activities.OptionsActivity;
-import com.mystrel.hstracker.activities.ViewStatsActivity;
+import com.mystrel.hstracker.AddGame.AddGameActivity;
+import com.mystrel.hstracker.AddPack.AddPackActivity;
+import com.mystrel.hstracker.AddQuest.AddQuestActivity;
+import com.mystrel.hstracker.Options.OptionsActivity;
+import com.mystrel.hstracker.ViewStats.ViewStatsActivity;
 
 public class MainActivity extends AppCompatActivity {
 

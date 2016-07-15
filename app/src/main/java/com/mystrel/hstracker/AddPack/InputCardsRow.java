@@ -1,4 +1,4 @@
-package com.mystrel.hstracker.components;
+package com.mystrel.hstracker.AddPack;
 
 import android.content.Context;
 import android.content.res.TypedArray;

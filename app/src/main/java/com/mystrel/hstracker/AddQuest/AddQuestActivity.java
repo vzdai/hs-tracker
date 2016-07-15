@@ -1,4 +1,4 @@
-package com.mystrel.hstracker.activities;
+package com.mystrel.hstracker.AddQuest;
 
 import android.support.v7.app.AppCompatActivity;
 

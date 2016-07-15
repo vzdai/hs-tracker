@@ -1,4 +1,4 @@
-package com.mystrel.hstracker.activities;
+package com.mystrel.hstracker.AddPack;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mystrel.hstracker.R;
-import com.mystrel.hstracker.components.InputCardsRow;
 
 import org.json.JSONObject;
 
