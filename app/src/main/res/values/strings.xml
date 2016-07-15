@@ -28,6 +28,14 @@
 
     <string name="reset_stats">Reset stats</string>
 
+    <string name="select_deck">Select your deck</string>
+    <string name="select_opponent">Select your opponent\'s class</string>
+    <string name="next">Next</string>
+    <string name="select_result">Did you win?</string>
+    <string name="notes">Notes</string>
+
+    <!-- CLASSES -->
+
 
     <!-- KEYS-->
     <string name="packs_file">Packs</string>
