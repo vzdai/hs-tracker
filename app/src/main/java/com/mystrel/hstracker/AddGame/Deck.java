@@ -2,24 +2,27 @@ package com.mystrel.hstracker.AddGame;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 
 /**
  * Created by Vivian on 2016-07-15.
  */
 public class Deck {
 
+    private Context context;
     private String deckClass;
     private String deckTitle;
     private boolean own;
-    private Drawable icon;
+    private int icon;
 
-    public Deck(String deckClass, String deckTitle, boolean own) {
+    public Deck(Context context, String deckClass, String deckTitle, boolean own) {
         this.deckClass = deckClass;
         this.deckTitle = deckTitle;
         this.own = own;
 
         String iconName = "icon_" + deckClass.toLowerCase();
 
+        icon = context.getResources().getIdentifier(iconName, "drawable", context.getPackageName());
     }
 
     public void setDeckClass(String deckClass) {
@@ -44,6 +47,10 @@ public class Deck {
 
     public boolean getOwn() {
         return own;
+    }
+
+    public int getIcon() {
+        return icon;
     }
 
 }

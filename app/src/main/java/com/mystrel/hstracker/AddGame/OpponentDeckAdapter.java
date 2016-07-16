@@ -1,9 +1,12 @@
 package com.mystrel.hstracker.AddGame;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import com.mystrel.hstracker.R;
 
 import java.util.List;
 import java.util.PriorityQueue;
@@ -22,7 +25,11 @@ public class OpponentDeckAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return deckList.size();
+        if(deckList == null) {
+            return 0;
+        } else {
+            return deckList.size();
+        }
     }
 
     public long getItemId(int position) {
@@ -30,30 +37,24 @@ public class OpponentDeckAdapter extends BaseAdapter {
     }
 
     public Deck getItem(int position) {
-        return deckList.get(position);
+        if(deckList != null) {
+            return deckList.get(position);
+        } else {
+            return null;
+        }
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        Deck deck = getItem(position);
 
         if(convertView == null) {
             DeckChoiceItem item = new DeckChoiceItem(activity);
-            item.inflateView(parent);
-            convertView = item;
-
-            holder = new ViewHolder();
-            holder.deckChoiceItem = item;
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+            convertView = item.inflate(parent);
+            item.setIcon(deck.getIcon());
+            item.setText(deck.getDeckTitle());
         }
-
 
         return convertView;
     }
 
-
-    static class ViewHolder {
-        public DeckChoiceItem deckChoiceItem;
-    }
 }

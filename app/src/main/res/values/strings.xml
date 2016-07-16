@@ -36,15 +36,15 @@
 
     <!-- CLASSES -->
     <string-array name="classes">
-        <string name="druid">Druid</string>
-        <string name="hunter">Hunter</string>
-        <string name="mage">Mage</string>
-        <string name="paladin">Paladin</string>
-        <string name="priest">Priest</string>
-        <string name="rogue">Rogue</string>
-        <string name="shaman">Shaman</string>
-        <string name="warlock">Warlock</string>
-        <string name="warrior">Warrior</string>
+        <item name="druid">Druid</item>
+        <item name="hunter">Hunter</item>
+        <item name="mage">Mage</item>
+        <item name="paladin">Paladin</item>
+        <item name="priest">Priest</item>
+        <item name="rogue">Rogue</item>
+        <item name="shaman">Shaman</item>
+        <item name="warlock">Warlock</item>
+        <item name="warrior">Warrior</item>
     </string-array>
 
 

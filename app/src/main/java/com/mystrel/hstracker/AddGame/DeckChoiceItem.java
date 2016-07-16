@@ -19,6 +19,8 @@ import com.mystrel.hstracker.R;
 public class DeckChoiceItem extends LinearLayout {
 
     private Context context;
+    private ImageView imageView;
+    private TextView textView;
 
     public DeckChoiceItem(Context context) {
         super(context);
@@ -44,23 +46,28 @@ public class DeckChoiceItem extends LinearLayout {
         arr.recycle();
     }
 
+    public void setIcon(int icon) {
+        imageView.setImageResource(icon);
+    }
+
     public void setIcon(Drawable icon) {
-        if (icon != null) {
-            ImageView imageView = (ImageView) findViewById(R.id.icon);
-            imageView.setImageDrawable(icon);
-        }
+        imageView.setImageDrawable(icon);
     }
 
     public void setText(String text) {
         if(text != null) {
-            TextView textView = (TextView) findViewById(R.id.text);
             textView.setText(text);
         }
     }
 
-    public void inflateView(ViewGroup parent) {
+    public View inflate(ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.deck_choice, parent);
+        View view = inflater.inflate(R.layout.deck_choice, parent, false);
+
+        imageView = (ImageView) view.findViewById(R.id.icon);
+        textView = (TextView) view.findViewById(R.id.text);
+
+        return view;
     }
 
 }

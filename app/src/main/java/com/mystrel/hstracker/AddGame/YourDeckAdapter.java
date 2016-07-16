@@ -15,7 +15,11 @@ public class YourDeckAdapter extends BaseAdapter {
 
 
     public int getCount() {
-        return deckList.size();
+        if(deckList == null) {
+            return 0;
+        } else {
+            return deckList.size();
+        }
     }
 
     public long getItemId(int position) {
@@ -23,7 +27,11 @@ public class YourDeckAdapter extends BaseAdapter {
     }
 
     public Deck getItem(int position) {
-        return deckList.get(position);
+        if(deckList != null) {
+            return deckList.get(position);
+        } else {
+            return null;
+        }
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {

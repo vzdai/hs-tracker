@@ -28,7 +28,7 @@ public class AddGameActivity extends AppCompatActivity {
 
         String[] classStrings = getResources().getStringArray(R.array.classes);
         for(String string : classStrings) {
-            classes.add(new Deck(string, string, false));
+            classes.add(new Deck(this, string, string, false));
         }
 
         setAdapters();
@@ -36,10 +36,12 @@ public class AddGameActivity extends AppCompatActivity {
 
     private void setAdapters() {
         ListView yourDecks = (ListView) findViewById(R.id.yourDecks);
+        yourDecks.setSelector(R.drawable.deck_choice_selector);
         yourDeckAdapter = new YourDeckAdapter();
         yourDecks.setAdapter(yourDeckAdapter);
 
         ListView theirDecks = (ListView) findViewById(R.id.theirDecks);
+        theirDecks.setSelector(R.drawable.deck_choice_selector);
         opponentDeckAdapter = new OpponentDeckAdapter(this, classes);
         theirDecks.setAdapter(opponentDeckAdapter);
     }
