@@ -3,9 +3,16 @@
     <declare-styleable name="InputCardsRow">
         <attr name="row_label" format="string" />
     </declare-styleable>
+
     <declare-styleable name="DeckChoiceItem">
         <attr name="deck_choice_icon" format="integer" />
         <attr name="deck_choice_text" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="AddDeckClassIcon">
+        <attr name="class_name" format="string" />
+        <attr name="class_icon" format="integer" />
+    </declare-styleable>
+
 
 </resources>

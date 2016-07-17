@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hstracker="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deck_name"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deck_class"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center">
+
+        <com.mystrel.hstracker.AddGame.AddDeckClassIcon
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            hstracker:class_icon="@drawable/icon_druid"
+            hstracker:class_name="@string/druid" />
+
+        <com.mystrel.hstracker.AddGame.AddDeckClassIcon
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            hstracker:class_icon="@drawable/icon_hunter"
+            hstracker:class_name="@string/hunter" />
+
+        <com.mystrel.hstracker.AddGame.AddDeckClassIcon
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            hstracker:class_icon="@drawable/icon_mage"
+            hstracker:class_name="@string/mage" />
+
+        <com.mystrel.hstracker.AddGame.AddDeckClassIcon
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            hstracker:class_icon="@drawable/icon_paladin"
+            hstracker:class_name="@string/paladin" />
+
+        <com.mystrel.hstracker.AddGame.AddDeckClassIcon
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            hstracker:class_icon="@drawable/icon_priest"
+            hstracker:class_name="@string/priest" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <com.mystrel.hstracker.AddGame.AddDeckClassIcon
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            hstracker:class_icon="@drawable/icon_rogue"
+            hstracker:class_name="@string/rogue" />
+
+        <com.mystrel.hstracker.AddGame.AddDeckClassIcon
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            hstracker:class_icon="@drawable/icon_shaman"
+            hstracker:class_name="@string/shaman" />
+
+        <com.mystrel.hstracker.AddGame.AddDeckClassIcon
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            hstracker:class_icon="@drawable/icon_warlock"
+            hstracker:class_name="@string/warlock" />
+
+        <com.mystrel.hstracker.AddGame.AddDeckClassIcon
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            hstracker:class_icon="@drawable/icon_warrior"
+            hstracker:class_name="@string/warrior" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_deck"/>
+
+</LinearLayout>

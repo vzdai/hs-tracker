@@ -33,6 +33,12 @@
     <string name="next">Next</string>
     <string name="select_result">Did you win?</string>
     <string name="notes">Notes</string>
+    <string name="add_deck">Add deck</string>
+    <string name="deck_name">Deck name:</string>
+    <string name="deck_class">Class:</string>
+
+
+
 
     <!-- CLASSES -->
     <string-array name="classes">
@@ -46,6 +52,16 @@
         <item name="warlock">Warlock</item>
         <item name="warrior">Warrior</item>
     </string-array>
+
+    <string name="druid">Druid</string>
+    <string name="hunter">Hunter</string>
+    <string name="mage">Mage</string>
+    <string name="paladin">Paladin</string>
+    <string name="priest">Priest</string>
+    <string name="rogue">Rogue</string>
+    <string name="shaman">Shaman</string>
+    <string name="warlock">Warlock</string>
+    <string name="warrior">Warrior</string>
 
 
     <!-- KEYS-->

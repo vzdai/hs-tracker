@@ -64,6 +64,14 @@
                 android:value=".AddPack.AddPackActivity" />
         </activity>
 
+        <activity android:name=".AddGame.AddDeckActivity"
+            android:label="@string/add_pack"
+            android:parentActivityName=".AddGame.AddGameActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AddGame.AddGameActivity" />
+        </activity>
+
     </application>
 
 </manifest>
