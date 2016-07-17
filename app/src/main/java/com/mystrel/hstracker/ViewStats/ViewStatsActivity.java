@@ -1,9 +1,12 @@
 package com.mystrel.hstracker.ViewStats;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.mystrel.hstracker.MainActivity;
 import com.mystrel.hstracker.R;
 
 import org.json.JSONObject;
@@ -23,8 +26,17 @@ public class ViewStatsActivity extends AppCompatActivity {
         setContentView(R.layout.view_stats);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView textView = (TextView) findViewById(R.id.text);
-        loadPacksData(textView);
+        //TextView textView = (TextView) findViewById(R.id.text);
+        //loadPacksData(textView);
+
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        ViewPager viewPager = (ViewPager) findViewById(R.id.statsViewPager);
+        viewPager.setAdapter(new TabsFragmentPageAdapter(getSupportFragmentManager(), this));
+
+        // Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.statsTabLayout);
+        tabLayout.setupWithViewPager(viewPager);
+
 
     }
 
