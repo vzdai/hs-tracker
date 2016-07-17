@@ -67,6 +67,12 @@
 
     <!-- KEYS-->
     <string name="packs_file">Packs</string>
+    <string name="num_packs_key">numPacks</string>
+    <string name="cards_per_type_key">cardsPerType</string>
+    <string name="type_key">type</string>
+    <string name="number_key">number</string>
+    <string name="packs_since_type_key">packsSinceType</string>
+
     <string name="pack_type_key">pack</string>
 
     <string name="classic_pack_key">Classic</string>

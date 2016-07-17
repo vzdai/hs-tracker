@@ -8,17 +8,20 @@ import android.widget.Toast;
 
 import com.mystrel.hstracker.R;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Vivian on 2016-07-13.
  */
 public class InputCardsActivity extends AppCompatActivity {
 
-    int regularCommon, goldenCommon, regularRare, goldenRare,
-            regularEpic, goldenEpic, regularLegendary, goldenLegendary;
+    private HashMap<String, Integer> cards;
 
     String packType;
 
@@ -28,10 +31,22 @@ public class InputCardsActivity extends AppCompatActivity {
         setContentView(R.layout.add_pack_input_cards);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        regularCommon = goldenCommon = regularRare = goldenRare =
-                regularEpic = goldenEpic = regularLegendary = goldenLegendary = 0;
+        cards = new HashMap<>();
 
         packType = getIntent().getStringExtra(getString(R.string.pack_type_key));
+    }
+
+    private void initializeCardsMap() {
+
+        cards.put(getString(R.string.regular_common_key), 0);
+        cards.put(getString(R.string.golden_common_key), 0);
+        cards.put(getString(R.string.regular_rare_key), 0);
+        cards.put(getString(R.string.golden_rare_key), 0);
+        cards.put(getString(R.string.regular_epic_key), 0);
+        cards.put(getString(R.string.golden_epic_key), 0);
+        cards.put(getString(R.string.regular_legendary_key), 0);
+        cards.put(getString(R.string.golden_legendary_key), 0);
+
     }
 
     public void addPack(View view) {
@@ -40,46 +55,110 @@ public class InputCardsActivity extends AppCompatActivity {
         InputCardsRow epicRow = (InputCardsRow) findViewById(R.id.epicRow);
         InputCardsRow legendaryRow = (InputCardsRow) findViewById(R.id.legendaryRow);
 
+        int totalCards = 0;
+
         if(commonRow != null) {
-            regularCommon = commonRow.getRegularCount();
-            goldenCommon = commonRow.getGoldenCount();
+            int regularCount = commonRow.getRegularCount();
+            int goldenCount = commonRow.getGoldenCount();
+
+            totalCards += regularCount + goldenCount;
+
+            cards.put(getString(R.string.regular_common_key), regularCount);
+            cards.put(getString(R.string.golden_common_key), goldenCount);
         }
 
         if(rareRow != null) {
-            regularRare = rareRow.getRegularCount();
-            goldenRare = rareRow.getGoldenCount();
+            int regularCount = rareRow.getRegularCount();
+            int goldenCount = rareRow.getGoldenCount();
+
+            totalCards += regularCount + goldenCount;
+
+            cards.put(getString(R.string.regular_rare_key), regularCount);
+            cards.put(getString(R.string.regular_rare_key), goldenCount);
         }
 
         if(epicRow != null) {
-            regularEpic = epicRow.getRegularCount();
-            goldenEpic = epicRow.getGoldenCount();
+            int regularCount = epicRow.getRegularCount();
+            int goldenCount = epicRow.getGoldenCount();
+
+            totalCards += regularCount + goldenCount;
+
+            cards.put(getString(R.string.regular_epic_key), regularCount);
+            cards.put(getString(R.string.golden_epic_key), goldenCount);
         }
 
         if(legendaryRow != null) {
-            regularLegendary = legendaryRow.getRegularCount();
-            goldenLegendary = legendaryRow.getGoldenCount();
+            int regularCount = legendaryRow.getRegularCount();
+            int goldenCount = legendaryRow.getGoldenCount();
+
+            totalCards += regularCount + goldenCount;
+
+            cards.put(getString(R.string.regular_legendary_key), regularCount);
+            cards.put(getString(R.string.golden_legendary_key), goldenCount);
         }
 
-        if(regularCommon + goldenCommon + regularRare + goldenRare +
-                regularEpic + goldenEpic + regularLegendary + goldenLegendary != 5) {
+        if(totalCards != 5) {
             Toast.makeText(this, getString(R.string.invalid_num_cards), Toast.LENGTH_SHORT).show();
         } else {
-            saveData();
+            updateData();
+        }
+    }
+
+    private void updateData() {
+        JSONObject oldData = loadPackData();
+        JSONObject newData = new JSONObject();
+
+        Integer numPacks;
+        JSONObject cardsPerType = new JSONObject();
+        JSONObject packsSinceType = new JSONObject();
+
+        try {
+            if(oldData == null) { // putting in the first pack, old data doesn't exist yet
+                numPacks = 1;
+
+                for(Map.Entry<String, Integer> entry : cards.entrySet()) {
+                    cardsPerType.put(entry.getKey(), entry.getValue());
+
+                    int numPacksSinceType = entry.getValue() == 0 ? 1 : 0;
+                    packsSinceType.put(entry.getKey(), numPacksSinceType);
+
+                }
+
+            } else {
+                numPacks = oldData.getInt(getString(R.string.num_packs_key));
+                numPacks = numPacks + 1;
+
+                JSONObject oldCardsPerType = oldData.getJSONObject(getString(R.string.cards_per_type_key));
+                JSONObject oldPacksSinceType = oldData.getJSONObject(getString(R.string.packs_since_type_key));
+
+                for(Map.Entry<String, Integer> entry : cards.entrySet()) {
+                    Integer oldCardsPerTypeEntry = oldCardsPerType.getInt(entry.getKey());
+                    oldCardsPerTypeEntry += entry.getValue();
+                    cardsPerType.put(entry.getKey(), oldCardsPerTypeEntry);
+
+                    Integer oldPacksSinceTypeEntry = oldPacksSinceType.getInt(entry.getKey());
+                    int numPacksSinceType = entry.getValue() == 0 ? oldPacksSinceTypeEntry + 1 : 0;
+                    packsSinceType.put(entry.getKey(), numPacksSinceType);
+                }
+            }
+
+            newData.put(getString(R.string.num_packs_key), numPacks);
+            newData.put(getString(R.string.cards_per_type_key), cardsPerType);
+            newData.put(getString(R.string.packs_since_type_key), packsSinceType);
+
+            saveData(newData);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private JSONObject packToJSON() {
         JSONObject data = new JSONObject();
         try {
-            data.put(getString(R.string.pack_type_key), packType);
-            data.put(getString(R.string.regular_common_key), regularCommon);
-            data.put(getString(R.string.golden_common_key), goldenCommon);
-            data.put(getString(R.string.regular_rare_key), regularRare);
-            data.put(getString(R.string.golden_rare_key), goldenRare);
-            data.put(getString(R.string.regular_epic_key), regularEpic);
-            data.put(getString(R.string.golden_epic_key), goldenEpic);
-            data.put(getString(R.string.regular_legendary_key), regularLegendary);
-            data.put(getString(R.string.golden_legendary_key), goldenLegendary);
+            for(Map.Entry<String, Integer> entry : cards.entrySet()) {
+                data.put(entry.getKey(), entry.getValue());
+            }
 
             return data;
 
@@ -89,10 +168,26 @@ public class InputCardsActivity extends AppCompatActivity {
         return null;
     }
 
-    private void saveData() {
+    private JSONObject loadPackData() {
         try {
-            FileOutputStream outputStream = openFileOutput(getString(R.string.packs_file), Context.MODE_APPEND);
-            JSONObject data = packToJSON();
+            FileInputStream inputStream = openFileInput(getString(R.string.packs_file));
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+
+            String jsonString = new String(buffer, "UTF-8");
+            return new JSONObject(jsonString);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private void saveData(JSONObject data) {
+        try {
+            FileOutputStream outputStream = openFileOutput(getString(R.string.packs_file), Context.MODE_PRIVATE);
             if(data != null) {
                 outputStream.write(data.toString().getBytes());
             }
@@ -101,4 +196,6 @@ public class InputCardsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
 }
