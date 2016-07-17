@@ -37,7 +37,8 @@
     <string name="deck_name">Deck name:</string>
     <string name="deck_class">Class:</string>
 
-
+    <string name="invalid_deck_name">Please enter the name of your deck</string>
+    <string name="invalid_select_class">Please select the class of your deck</string>
 
 
     <!-- CLASSES -->
@@ -80,5 +81,7 @@
     <string name="golden_epic_key">goldenEpic</string>
     <string name="regular_legendary_key">regularLegendary</string>
     <string name="golden_legendary_key">goldenLegendary</string>
+
+    <string name="decks_file">Decks</string>
 
 </resources>
