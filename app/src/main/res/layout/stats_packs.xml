@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/overall_packs_stats"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/total_packs"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/total_dust"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dust_per_pack"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_type_stats"/>
+
+        <com.mystrel.hstracker.ViewStats.PacksStatsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalCommonRow"
+            app:row_label="@string/common"/>
+
+        <com.mystrel.hstracker.ViewStats.PacksStatsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalRareRow"
+            app:row_label="@string/rare"/>
+
+        <com.mystrel.hstracker.ViewStats.PacksStatsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalEpicRow"
+            app:row_label="@string/epic"/>
+
+        <com.mystrel.hstracker.ViewStats.PacksStatsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalLegendaryRow"
+            app:row_label="@string/legendary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/packs_since_last"/>
+
+        <com.mystrel.hstracker.ViewStats.PacksStatsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sinceCommonRow"
+            app:packs_stats_row_label="@string/common"/>
+
+        <com.mystrel.hstracker.ViewStats.PacksStatsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sinceRareRow"
+            app:packs_stats_row_label="@string/rare"/>
+
+        <com.mystrel.hstracker.ViewStats.PacksStatsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sinceEpicRow"
+            app:packs_stats_row_label="@string/epic"/>
+
+        <com.mystrel.hstracker.ViewStats.PacksStatsRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sinceLegendaryRow"
+            app:packs_stats_row_label="@string/legendary"/>
+
+    </LinearLayout>
+
+</LinearLayout>

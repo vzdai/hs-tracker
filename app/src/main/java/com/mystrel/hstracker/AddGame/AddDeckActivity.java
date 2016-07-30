@@ -1,5 +1,6 @@
 package com.mystrel.hstracker.AddGame;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -11,14 +12,21 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.mystrel.hstracker.R;
+import com.mystrel.hstracker.Utils;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Vivian on 2016-07-16.
  */
-public class AddDeckActivity extends AppCompatActivity {
+public class AddDeckActivity extends AddGameActivity {
 
     private List<AddDeckClassIcon> classIcons;
     private AddDeckClassIcon selectedItem;
@@ -76,6 +84,7 @@ public class AddDeckActivity extends AppCompatActivity {
                             Toast.makeText(AddDeckActivity.this, R.string.invalid_select_class, Toast.LENGTH_SHORT).show();
                         } else {
                             addDeckToJson(deckName, selectedItem.getClassName());
+                            finish();
                         }
                     }
                 }
@@ -84,9 +93,43 @@ public class AddDeckActivity extends AppCompatActivity {
     }
 
     private void addDeckToJson(String deckName, String className) {
+        JSONObject decksBefore = loadDeckData();
 
+        JSONObject newDeck = new JSONObject();
+        try {
+            newDeck.put(getString(R.string.deck_name_key), deckName);
+            newDeck.put(getString(R.string.deck_class_key), className);
+            newDeck.put(getString(R.string.wins_key), 0);
+            newDeck.put(getString(R.string.losses_key), 0);
+
+            JSONObject vsClasses = new JSONObject();
+
+            String[] classStrings = getResources().getStringArray(R.array.classes);
+            for(String string : classStrings) {
+                JSONObject winLoss = new JSONObject();
+                winLoss.put(getString(R.string.wins_key), 0);
+                winLoss.put(getString(R.string.losses_key), 0);
+                vsClasses.put(string, winLoss);
+            }
+
+            newDeck.put(getString(R.string.vs_classes_key), vsClasses);
+
+            JSONArray decks;
+
+            if(decksBefore == null) {
+                decksBefore = new JSONObject();
+                decks = new JSONArray();
+            } else {
+                decks = decksBefore.getJSONArray(getString(R.string.decks_file));
+            }
+
+            decks.put(newDeck);
+            decksBefore.put(getString(R.string.decks_file), decks);
+            Utils.saveData(getString(R.string.decks_file), decksBefore, this);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-
 
 }

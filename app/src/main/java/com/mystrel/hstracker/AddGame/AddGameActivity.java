@@ -11,6 +11,10 @@ import android.widget.ListView;
 
 import com.mystrel.hstracker.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +24,7 @@ import java.util.List;
 public class AddGameActivity extends AppCompatActivity {
 
     private List<Deck> classes;
+    private List<Deck> yourDecks;
     private OpponentDeckAdapter opponentDeckAdapter;
     private YourDeckAdapter yourDeckAdapter;
 
@@ -29,23 +34,50 @@ public class AddGameActivity extends AppCompatActivity {
         setContentView(R.layout.add_game);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        setClasses();
+        setYourDecks();
+        setAdapters();
+    }
+
+    private void setClasses() {
         classes = new ArrayList<>();
 
         String[] classStrings = getResources().getStringArray(R.array.classes);
         for(String string : classStrings) {
             classes.add(new Deck(this, string, string, false));
         }
+    }
 
-        setAdapters();
+    private void setYourDecks() {
+        yourDecks = new ArrayList<>();
+        JSONObject data = loadDeckData();
+
+        if(data != null) {
+            try {
+                JSONArray decks = data.getJSONArray(getString(R.string.decks_file));
+
+                for(int i = 0; i < decks.length(); i++) {
+                    JSONObject deck = decks.getJSONObject(i);
+
+                    String name = deck.getString(getString(R.string.deck_name_key));
+                    String deckClass = deck.getString(getString(R.string.deck_class_key));
+
+                    yourDecks.add(new Deck(this, deckClass, name, true));
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void setAdapters() {
-        ListView yourDecks = (ListView) findViewById(R.id.yourDecks);
-        yourDecks.setSelector(R.drawable.deck_choice_selector);
-        yourDeckAdapter = new YourDeckAdapter(this, classes); // change to your decks
-        yourDecks.setAdapter(yourDeckAdapter);
+        ListView yourDecksView = (ListView) findViewById(R.id.yourDecks);
+        yourDecksView.setSelector(R.drawable.deck_choice_selector);
+        yourDeckAdapter = new YourDeckAdapter(this, yourDecks);
+        yourDecksView.setAdapter(yourDeckAdapter);
 
-        addNewDeckButton(yourDecks);
+        addNewDeckButton(yourDecksView);
 
         ListView theirDecks = (ListView) findViewById(R.id.theirDecks);
         theirDecks.setSelector(R.drawable.deck_choice_selector);
@@ -67,6 +99,23 @@ public class AddGameActivity extends AppCompatActivity {
         });
 
         listView.addFooterView(addDeckButton);
+    }
+
+    public JSONObject loadDeckData() {
+        try {
+            FileInputStream inputStream = openFileInput(getString(R.string.decks_file));
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+
+            String jsonString = new String(buffer, "UTF-8");
+            return new JSONObject(jsonString);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

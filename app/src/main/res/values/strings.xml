@@ -40,6 +40,18 @@
     <string name="invalid_deck_name">Please enter the name of your deck</string>
     <string name="invalid_select_class">Please select the class of your deck</string>
 
+    <string name="quests_tab">Quests</string>
+    <string name="packs_tab">Packs</string>
+    <string name="games_tab">Games</string>
+
+    <!-- PACKS STATS -->
+    <string name="overall_packs_stats">Overall Packs Stats:</string>
+    <string name="total_packs">You have opened %1$d packs.</string>
+    <string name="total_dust">If all cards were dusted, you would have %1$d dust.</string>
+    <string name="dust_per_pack">That is an average of %1$f dust per pack.</string>
+
+    <string name="card_type_stats">Total cards obtained by card type:</string>
+    <string name="packs_since_last">Number of packs since you last opened a:</string>
 
     <!-- CLASSES -->
     <string-array name="classes">
@@ -89,5 +101,14 @@
     <string name="golden_legendary_key">goldenLegendary</string>
 
     <string name="decks_file">Decks</string>
+    <string name="decks_key">decks</string>
+    <string name="deck_name_key">deckName</string>
+    <string name="deck_class_key">deckClass</string>
+    <string name="wins_key">wins</string>
+    <string name="losses_key">losses</string>
+    <string name="vs_classes_key">vsClasses</string>
 
+    <string name="fragment_page_key">fragment_page</string>
+
+    <string name="quests_file">Quests</string>
 </resources>

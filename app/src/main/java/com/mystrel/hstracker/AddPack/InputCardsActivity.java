@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mystrel.hstracker.R;
+import com.mystrel.hstracker.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -101,11 +102,13 @@ public class InputCardsActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.invalid_num_cards), Toast.LENGTH_SHORT).show();
         } else {
             updateData();
+            setResult(100);
+            finish();
         }
     }
 
     private void updateData() {
-        JSONObject oldData = loadPackData();
+        JSONObject oldData = Utils.loadData(getString(R.string.packs_file), this);
         JSONObject newData = new JSONObject();
 
         Integer numPacks;
@@ -117,7 +120,9 @@ public class InputCardsActivity extends AppCompatActivity {
                 numPacks = 1;
 
                 for(Map.Entry<String, Integer> entry : cards.entrySet()) {
-                    cardsPerType.put(entry.getKey(), entry.getValue());
+
+                    int numCardsPerType = entry.getValue() != 0 ? entry.getValue() : 0;
+                    cardsPerType.put(entry.getKey(), numCardsPerType);
 
                     int numPacksSinceType = entry.getValue() == 0 ? 1 : 0;
                     packsSinceType.put(entry.getKey(), numPacksSinceType);
@@ -146,7 +151,7 @@ public class InputCardsActivity extends AppCompatActivity {
             newData.put(getString(R.string.cards_per_type_key), cardsPerType);
             newData.put(getString(R.string.packs_since_type_key), packsSinceType);
 
-            saveData(newData);
+            Utils.saveData(getString(R.string.packs_file), newData, this);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -167,35 +172,5 @@ public class InputCardsActivity extends AppCompatActivity {
         }
         return null;
     }
-
-    private JSONObject loadPackData() {
-        try {
-            FileInputStream inputStream = openFileInput(getString(R.string.packs_file));
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-
-            String jsonString = new String(buffer, "UTF-8");
-            return new JSONObject(jsonString);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private void saveData(JSONObject data) {
-        try {
-            FileOutputStream outputStream = openFileOutput(getString(R.string.packs_file), Context.MODE_PRIVATE);
-            if(data != null) {
-                outputStream.write(data.toString().getBytes());
-            }
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
 }

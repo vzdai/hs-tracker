@@ -19,6 +19,13 @@ public class AddPackActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode== 100){
+            finish();
+        }
+    }
+
     public void addClassicPack(View view) {
         Intent intent = new Intent(this, InputCardsActivity.class);
         intent.putExtra(getString(R.string.pack_type_key), getString(R.string.classic_pack_key));

@@ -14,5 +14,8 @@
         <attr name="class_icon" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="PacksStatsRow">
+        <attr name="packs_stats_row_label" format="string" />
+    </declare-styleable>
 
 </resources>
