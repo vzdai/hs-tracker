@@ -47,6 +47,11 @@ public class PacksStatsRow extends TableLayout {
 
         TextView goldenPercent = (TextView) findViewById(R.id.golden_percent);
         goldenPercent.setVisibility(GONE);
+
+        TableLayout container = (TableLayout) findViewById(R.id.container);
+        container.setColumnStretchable(0, true);
+        container.setColumnStretchable(1, true);
+        container.setColumnStretchable(2, true);
     }
 
     public void setRegularNumber(int number) {
@@ -61,12 +66,12 @@ public class PacksStatsRow extends TableLayout {
 
     public void setRegularPercent(float percent) {
         TextView regularPercent = (TextView) findViewById(R.id.regular_percent);
-        regularPercent.setText(String.valueOf(percent));
+        regularPercent.setText(String.format("%.2f%%", percent * 100));
     }
 
-    public void setGoldenPercent(int percent) {
+    public void setGoldenPercent(float percent) {
         TextView regularNumber = (TextView) findViewById(R.id.golden_percent);
-        regularNumber.setText(String.valueOf(percent));
+        regularNumber.setText(String.format("%.2f%%", percent * 100));
     }
 
 }

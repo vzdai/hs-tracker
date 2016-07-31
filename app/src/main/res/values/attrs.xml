@@ -18,4 +18,7 @@
         <attr name="packs_stats_row_label" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="SincePackSection">
+        <attr name="hide_percentages" format="boolean"/>
+    </declare-styleable>
 </resources>

@@ -75,7 +75,7 @@ public class InputCardsActivity extends AppCompatActivity {
             totalCards += regularCount + goldenCount;
 
             cards.put(getString(R.string.regular_rare_key), regularCount);
-            cards.put(getString(R.string.regular_rare_key), goldenCount);
+            cards.put(getString(R.string.golden_rare_key), goldenCount);
         }
 
         if(epicRow != null) {
@@ -107,65 +107,34 @@ public class InputCardsActivity extends AppCompatActivity {
         }
     }
 
-    private void updateData() {
-        JSONObject oldData = Utils.loadData(getString(R.string.packs_file), this);
-        JSONObject newData = new JSONObject();
-
-        Integer numPacks;
-        JSONObject cardsPerType = new JSONObject();
-        JSONObject packsSinceType = new JSONObject();
-
+    private JSONObject packsSince(JSONObject data, String jsonKey, String typeKey) {
+        JSONObject packsSince = new JSONObject();
         try {
-            if(oldData == null) { // putting in the first pack, old data doesn't exist yet
-                numPacks = 1;
+            if(!packType.equals(typeKey)) {
+                if(data == null) {
+                    for(Map.Entry<String, Integer> entry : cards.entrySet()) {
+                        packsSince.put(entry.getKey(), 0);
+                    }
+                    return packsSince;
+                } else {
+                    return data.getJSONObject(jsonKey);
+                }
+            }
 
+            if(data == null) { // putting in the first pack, old data doesn't exist yet
                 for(Map.Entry<String, Integer> entry : cards.entrySet()) {
-
-                    int numCardsPerType = entry.getValue() != 0 ? entry.getValue() : 0;
-                    cardsPerType.put(entry.getKey(), numCardsPerType);
-
                     int numPacksSinceType = entry.getValue() == 0 ? 1 : 0;
-                    packsSinceType.put(entry.getKey(), numPacksSinceType);
-
+                    packsSince.put(entry.getKey(), numPacksSinceType);
                 }
-
             } else {
-                numPacks = oldData.getInt(getString(R.string.num_packs_key));
-                numPacks = numPacks + 1;
-
-                JSONObject oldCardsPerType = oldData.getJSONObject(getString(R.string.cards_per_type_key));
-                JSONObject oldPacksSinceType = oldData.getJSONObject(getString(R.string.packs_since_type_key));
-
+                JSONObject oldPacksSince = data.getJSONObject(jsonKey);
                 for(Map.Entry<String, Integer> entry : cards.entrySet()) {
-                    Integer oldCardsPerTypeEntry = oldCardsPerType.getInt(entry.getKey());
-                    oldCardsPerTypeEntry += entry.getValue();
-                    cardsPerType.put(entry.getKey(), oldCardsPerTypeEntry);
-
-                    Integer oldPacksSinceTypeEntry = oldPacksSinceType.getInt(entry.getKey());
+                    Integer oldPacksSinceTypeEntry = oldPacksSince.getInt(entry.getKey());
                     int numPacksSinceType = entry.getValue() == 0 ? oldPacksSinceTypeEntry + 1 : 0;
-                    packsSinceType.put(entry.getKey(), numPacksSinceType);
+                    packsSince.put(entry.getKey(), numPacksSinceType);
                 }
             }
-
-            newData.put(getString(R.string.num_packs_key), numPacks);
-            newData.put(getString(R.string.cards_per_type_key), cardsPerType);
-            newData.put(getString(R.string.packs_since_type_key), packsSinceType);
-
-            Utils.saveData(getString(R.string.packs_file), newData, this);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private JSONObject packToJSON() {
-        JSONObject data = new JSONObject();
-        try {
-            for(Map.Entry<String, Integer> entry : cards.entrySet()) {
-                data.put(entry.getKey(), entry.getValue());
-            }
-
-            return data;
+            return packsSince;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -173,4 +142,76 @@ public class InputCardsActivity extends AppCompatActivity {
         return null;
     }
 
+    private JSONObject updateNumPacks(JSONObject data) {
+        JSONObject numPacks = new JSONObject();
+        try {
+            if(data == null) {
+                numPacks.put(getString(R.string.classic_pack_key), 0);
+                numPacks.put(getString(R.string.tgt_pack_key), 0);
+                numPacks.put(getString(R.string.wotog_pack_key), 0);
+
+                numPacks.put(packType, 1);
+
+            } else {
+                numPacks = data.getJSONObject(getString(R.string.num_packs_key));
+                int oldPackNum = numPacks.getInt(packType);
+                numPacks.put(packType, oldPackNum + 1);
+            }
+            return numPacks;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private JSONObject updateCardsPerType(JSONObject data) {
+        JSONObject cardsPerType = new JSONObject();
+        try {
+            if (data == null) { // putting in the first pack, old data doesn't exist yet
+                for (Map.Entry<String, Integer> entry : cards.entrySet()) {
+                    int numCardsPerType = entry.getValue() != 0 ? entry.getValue() : 0;
+                    cardsPerType.put(entry.getKey(), numCardsPerType);
+                }
+            } else {
+                JSONObject oldCardsPerType = data.getJSONObject(getString(R.string.cards_per_type_key));
+
+                for (Map.Entry<String, Integer> entry : cards.entrySet()) {
+                    Integer oldCardsPerTypeEntry = oldCardsPerType.getInt(entry.getKey());
+                    oldCardsPerTypeEntry += entry.getValue();
+                    cardsPerType.put(entry.getKey(), oldCardsPerTypeEntry);
+                }
+            }
+            return cardsPerType;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private void updateData() {
+        JSONObject oldData = Utils.loadData(getString(R.string.packs_file), this);
+        JSONObject newData = new JSONObject();
+
+        JSONObject numPacks = updateNumPacks(oldData);
+        JSONObject cardsPerType = updateCardsPerType(oldData);
+        JSONObject classicPacksSince = packsSince(oldData,
+                getString(R.string.classic_packs_since_key), getString(R.string.classic_pack_key));
+        JSONObject tgtPacksSince = packsSince(oldData,
+                getString(R.string.tgt_packs_since_key), getString(R.string.tgt_pack_key));
+        JSONObject wotogPacksSince = packsSince(oldData,
+                getString(R.string.wotog_packs_since_key), getString(R.string.wotog_pack_key));
+
+        try {
+            newData.put(getString(R.string.num_packs_key), numPacks);
+            newData.put(getString(R.string.cards_per_type_key), cardsPerType);
+            newData.put(getString(R.string.classic_packs_since_key), classicPacksSince);
+            newData.put(getString(R.string.tgt_packs_since_key), tgtPacksSince);
+            newData.put(getString(R.string.wotog_packs_since_key), wotogPacksSince);
+
+            Utils.saveData(getString(R.string.packs_file), newData, this);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

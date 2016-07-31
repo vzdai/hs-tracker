@@ -46,12 +46,12 @@
 
     <!-- PACKS STATS -->
     <string name="overall_packs_stats">Overall Packs Stats:</string>
-    <string name="total_packs">You have opened %1$d packs.</string>
+    <string name="total_packs">You have opened %1$d Classic packs, %2$d TGT packs, and %3$d WOTOG packs.</string>
     <string name="total_dust">If all cards were dusted, you would have %1$d dust.</string>
-    <string name="dust_per_pack">That is an average of %1$f dust per pack.</string>
+    <string name="dust_per_pack">That is an average of %1$.2f dust per pack.</string>
 
-    <string name="card_type_stats">Total cards obtained by card type:</string>
-    <string name="packs_since_last">Number of packs since you last opened a:</string>
+    <string name="total_card_type_stats">Total cards obtained by card type:</string>
+    <string name="packs_since_last">Number of %1$s packs since you last opened a:</string>
 
     <!-- CLASSES -->
     <string-array name="classes">
@@ -83,7 +83,9 @@
     <string name="cards_per_type_key">cardsPerType</string>
     <string name="type_key">type</string>
     <string name="number_key">number</string>
-    <string name="packs_since_type_key">packsSinceType</string>
+    <string name="classic_packs_since_key">classicPacksSince</string>
+    <string name="tgt_packs_since_key">tgtPacksSince</string>
+    <string name="wotog_packs_since_key">wotogPacksSince</string>
 
     <string name="pack_type_key">pack</string>
 
