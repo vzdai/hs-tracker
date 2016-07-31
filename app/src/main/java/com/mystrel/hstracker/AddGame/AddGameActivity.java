@@ -220,7 +220,7 @@ public class AddGameActivity extends AppCompatActivity {
             JSONObject overallClassObj = overallVsClasses.getJSONObject(theirDeck.getDeckClass());
             updateWinLoss(overallClassObj);
 
-            Utils.saveData(getString(R.string.packs_file), data, this);
+            Utils.saveData(getString(R.string.decks_file), data, this);
 
         } catch (Exception e) {
             e.printStackTrace();

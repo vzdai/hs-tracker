@@ -118,7 +118,7 @@ public class AddDeckActivity extends AddGameActivity {
                 decksBefore = new JSONObject();
                 decks = new JSONObject();
             } else {
-                decks = decksBefore.getJSONObject(getString(R.string.decks_file));
+                decks = decksBefore.getJSONObject(getString(R.string.decks_key));
             }
 
             decks.put(deckName, newDeck);

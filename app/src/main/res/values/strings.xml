@@ -60,6 +60,14 @@
     <string name="total_card_type_stats">Total cards obtained by card type:</string>
     <string name="packs_since_last">Number of %1$s packs since you last opened a:</string>
 
+    <!-- GAMES STATS -->
+    <string name="overall_stats_title">Overall Stats</string>
+    <string name="class_stats_title">Stats by Class</string>
+    <string name="stats_wins">Wins: </string>
+    <string name="stats_losses">Losses: </string>
+    <string name="stats_win_percent">Win percentage:</string>
+    <string name="overall">Overall</string>
+
     <!-- CLASSES -->
     <string-array name="classes">
         <item name="druid">Druid</item>
