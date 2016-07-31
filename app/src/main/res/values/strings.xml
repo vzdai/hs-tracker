@@ -40,8 +40,12 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
-    <string name="invalid_deck_name">Please enter the name of your deck</string>
-    <string name="invalid_select_class">Please select the class of your deck</string>
+    <string name="invalid_deck_name">Please enter the name of your deck.</string>
+    <string name="invalid_select_class">Please select the class of your deck.</string>
+
+    <string name="invalid_your_deck">Please select which deck you used.</string>
+    <string name="invalid_their_deck">Please select the class of your opponent.</string>
+    <string name="invalid_win_loss">Please select the result of your game.</string>
 
     <string name="quests_tab">Quests</string>
     <string name="packs_tab">Packs</string>
@@ -112,6 +116,7 @@
     <string name="wins_key">wins</string>
     <string name="losses_key">losses</string>
     <string name="vs_classes_key">vsClasses</string>
+    <string name="overall_games_key">overall</string>
 
     <string name="fragment_page_key">fragment_page</string>
 

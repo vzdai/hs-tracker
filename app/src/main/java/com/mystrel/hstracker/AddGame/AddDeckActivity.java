@@ -97,7 +97,6 @@ public class AddDeckActivity extends AddGameActivity {
 
         JSONObject newDeck = new JSONObject();
         try {
-            newDeck.put(getString(R.string.deck_name_key), deckName);
             newDeck.put(getString(R.string.deck_class_key), className);
             newDeck.put(getString(R.string.wins_key), 0);
             newDeck.put(getString(R.string.losses_key), 0);
@@ -114,17 +113,16 @@ public class AddDeckActivity extends AddGameActivity {
 
             newDeck.put(getString(R.string.vs_classes_key), vsClasses);
 
-            JSONArray decks;
-
+            JSONObject decks;
             if(decksBefore == null) {
                 decksBefore = new JSONObject();
-                decks = new JSONArray();
+                decks = new JSONObject();
             } else {
-                decks = decksBefore.getJSONArray(getString(R.string.decks_file));
+                decks = decksBefore.getJSONObject(getString(R.string.decks_file));
             }
 
-            decks.put(newDeck);
-            decksBefore.put(getString(R.string.decks_file), decks);
+            decks.put(deckName, newDeck);
+            decksBefore.put(getString(R.string.decks_key), decks);
             Utils.saveData(getString(R.string.decks_file), decksBefore, this);
 
         } catch (Exception e) {
