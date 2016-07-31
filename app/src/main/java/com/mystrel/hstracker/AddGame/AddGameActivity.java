@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.mystrel.hstracker.R;
+import com.mystrel.hstracker.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +29,7 @@ public class AddGameActivity extends AppCompatActivity {
     private List<Deck> yourDecks;
     private OpponentDeckAdapter opponentDeckAdapter;
     private YourDeckAdapter yourDeckAdapter;
+    private Boolean didYouWin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,7 @@ public class AddGameActivity extends AppCompatActivity {
 
     private void setYourDecks() {
         yourDecks = new ArrayList<>();
-        JSONObject data = loadDeckData();
+        JSONObject data = Utils.loadData(getString(R.string.decks_file), this);
 
         if(data != null) {
             try {
@@ -101,20 +104,26 @@ public class AddGameActivity extends AppCompatActivity {
         listView.addFooterView(addDeckButton);
     }
 
-    public JSONObject loadDeckData() {
-        try {
-            FileInputStream inputStream = openFileInput(getString(R.string.decks_file));
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
+    public void onCheckboxClicked(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
 
-            String jsonString = new String(buffer, "UTF-8");
-            return new JSONObject(jsonString);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+        switch(view.getId()) {
+            case R.id.yesCheckbox:
+                if(checked) {
+                    ((CheckBox) findViewById(R.id.noCheckbox)).setChecked(false);
+                    didYouWin = true;
+                } else {
+                    didYouWin = null;
+                }
+                break;
+            case R.id.noCheckbox:
+                if(checked) {
+                    ((CheckBox) findViewById(R.id.yesCheckbox)).setChecked(false);
+                    didYouWin = false;
+                } else {
+                    didYouWin = null;
+                }
+                break;
         }
     }
 

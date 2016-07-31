@@ -36,6 +36,9 @@
     <string name="add_deck">Add deck</string>
     <string name="deck_name">Deck name:</string>
     <string name="deck_class">Class:</string>
+    <string name="did_you_win">Did you win?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
     <string name="invalid_deck_name">Please enter the name of your deck</string>
     <string name="invalid_select_class">Please select the class of your deck</string>

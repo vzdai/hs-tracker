@@ -93,7 +93,7 @@ public class AddDeckActivity extends AddGameActivity {
     }
 
     private void addDeckToJson(String deckName, String className) {
-        JSONObject decksBefore = loadDeckData();
+        JSONObject decksBefore = Utils.loadData(getString(R.string.decks_file), this);
 
         JSONObject newDeck = new JSONObject();
         try {

@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.mystrel.hstracker.R;
 
@@ -48,17 +50,17 @@ public class YourDeckAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         Deck deck = getItem(position);
+        View itemView = convertView;
 
         if(convertView == null) {
             DeckChoiceItem item = new DeckChoiceItem(activity);
-            convertView = item.inflate(parent);
-            item.setIcon(deck.getIcon());
-            item.setText(deck.getDeckTitle());
+            itemView = item.inflate(parent);
         }
 
-        return convertView;
+        ((ImageView) itemView.findViewById(R.id.icon)).setImageResource(deck.getIcon());
+        ((TextView) itemView.findViewById(R.id.text)).setText(deck.getDeckTitle());
+
+        return itemView;
     }
-
-
 
 }
