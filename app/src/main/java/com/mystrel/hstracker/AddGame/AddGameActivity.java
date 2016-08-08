@@ -156,6 +156,8 @@ public class AddGameActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.invalid_win_loss), Toast.LENGTH_SHORT).show();
         } else {
             addGameToJson();
+            Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 

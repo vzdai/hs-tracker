@@ -2,6 +2,7 @@
     <string name="app_name">HSTracker</string>
 
     <string name="your_quests">Your Quests:</string>
+    <string name="welcome">Welcome to HSTracker!</string>
 
     <string name="add_quest">Add Quest</string>
     <string name="add_pack">Add Pack</string>
@@ -58,7 +59,7 @@
     <string name="dust_per_pack">That is an average of %1$.2f dust per pack.</string>
 
     <string name="total_card_type_stats">Total cards obtained by card type:</string>
-    <string name="packs_since_last">Number of %1$s packs since you last opened a:</string>
+    <string name="packs_since_last">Number of %1$s packs since you last opened:</string>
 
     <!-- GAMES STATS -->
     <string name="overall_stats_title">Overall Stats</string>

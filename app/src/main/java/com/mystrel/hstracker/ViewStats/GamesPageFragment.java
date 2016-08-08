@@ -3,7 +3,6 @@ package com.mystrel.hstracker.ViewStats;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Vivian on 2016-07-26.

@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.mystrel.hstracker.R;
@@ -46,6 +48,10 @@ public class SincePackSection extends LinearLayout{
 
     public void setTitle(String title) {
         TextView titleView = (TextView) findViewById(R.id.title);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(0, 20, 0, 10); // llp.setMargins(left, top, right, bottom);
+        titleView.setLayoutParams(lp);
+        titleView.setTextSize(16);
         titleView.setText(title);
     }
 

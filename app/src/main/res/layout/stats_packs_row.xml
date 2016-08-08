@@ -22,32 +22,28 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/regular_number"
-            android:text="5"/>
+            android:id="@+id/regular_number"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/regular_percent"
-            android:text="5"/>
+            android:id="@+id/regular_percent"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/golden_number"
-            android:text="5"/>
+            android:id="@+id/golden_number"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/golden_percent"
-            android:text="5"/>
+            android:id="@+id/golden_percent"/>
 
     </TableRow>
 

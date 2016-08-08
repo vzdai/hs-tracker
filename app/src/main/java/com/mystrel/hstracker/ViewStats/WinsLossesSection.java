@@ -6,7 +6,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.mystrel.hstracker.R;
@@ -40,6 +42,12 @@ public class WinsLossesSection extends TableLayout {
 
     public void setTitle(String title, View view) {
         TextView titleView = (TextView) view.findViewById(R.id.title);
+
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        lp.setMargins(0, 15, 0, 10); // llp.setMargins(left, top, right, bottom);
+        titleView.setLayoutParams(lp);
+
+        titleView.setTextSize(16);
         titleView.setVisibility(VISIBLE);
         titleView.setText(title);
     }

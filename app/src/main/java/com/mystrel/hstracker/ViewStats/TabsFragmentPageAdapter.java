@@ -19,8 +19,12 @@ public class TabsFragmentPageAdapter extends FragmentPagerAdapter {
         this.context = context;
         tabTitles = new String[] {
                 context.getString(R.string.packs_tab),
-                context.getString(R.string.games_tab),
-                context.getString(R.string.quests_tab) };
+                context.getString(R.string.games_tab)
+                /*
+                ,
+                context.getString(R.string.quests_tab)
+                */
+        };
     }
 
     @Override

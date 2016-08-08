@@ -1,10 +1,8 @@
 package com.mystrel.hstracker.AddGame;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,12 +12,8 @@ import android.widget.Toast;
 import com.mystrel.hstracker.R;
 import com.mystrel.hstracker.Utils;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 

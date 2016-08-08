@@ -13,35 +13,60 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/your_quests" />
+        android:text="@string/welcome"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:src="@drawable/hs_icon"/>
+    </LinearLayout>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="0,1">
 
+        <!--
         <Button
             android:onClick="addQuest"
-            android:text="@string/add_quest" />
-
+            android:text="@string/add_quest"
+            android:layout_marginBottom="2dp"/>
+-->
         <Button
             android:onClick="addPack"
-            android:text="@string/add_pack" />
+            android:text="@string/add_pack"
+            android:layout_marginBottom="2dp"/>
 
         <Button
             android:onClick="addGame"
-            android:text="@string/add_game" />
+            android:text="@string/add_game"
+            android:layout_marginBottom="2dp"/>
 
         <Button
             android:onClick="viewStats"
-            android:text="@string/view_stats" />
+            android:text="@string/view_stats"
+            android:layout_marginBottom="2dp"/>
 
+        <Button
+            android:onClick="resetStats"
+            android:text="@string/reset_stats"
+            android:layout_marginBottom="2dp"/>
+
+        <!--
         <Button
             android:onClick="viewOptions"
             android:text="@string/options"
-            />
-
+            android:layout_marginBottom="2dp"/>
+-->
     </TableLayout>
 
 </LinearLayout>
