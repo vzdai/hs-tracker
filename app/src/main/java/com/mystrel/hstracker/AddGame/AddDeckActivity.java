@@ -1,5 +1,7 @@
 package com.mystrel.hstracker.AddGame;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -77,7 +79,12 @@ public class AddDeckActivity extends AddGameActivity {
                         } else if(selectedItem == null) {
                             Toast.makeText(AddDeckActivity.this, R.string.invalid_select_class, Toast.LENGTH_SHORT).show();
                         } else {
-                            addDeckToJson(deckName, selectedItem.getClassName());
+                            String className = selectedItem.getClassName();
+                            addDeckToJson(deckName, className);
+                            Intent returnIntent = new Intent();
+                            returnIntent.putExtra("deckName", deckName);
+                            returnIntent.putExtra("deckClass", className);
+                            setResult(Activity.RESULT_OK, returnIntent);
                             finish();
                         }
                     }

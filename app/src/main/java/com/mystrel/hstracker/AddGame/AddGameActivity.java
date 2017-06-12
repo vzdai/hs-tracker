@@ -1,5 +1,6 @@
 package com.mystrel.hstracker.AddGame;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -117,11 +118,23 @@ public class AddGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddGameActivity.this, AddDeckActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
         listView.addFooterView(addDeckButton);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                String deckClass = data.getStringExtra("deckClass");
+                String deckName = data.getStringExtra("deckName");
+                yourDecks.add(new Deck(this, deckClass, deckName, true));
+                yourDeckAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
     public void onCheckboxClicked(View view) {
